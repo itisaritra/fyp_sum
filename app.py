@@ -4,7 +4,6 @@ import time
 import PyPDF2
 import docx
 from io import StringIO, BytesIO
-from rouge_score import rouge_scorer  # NEW
 
 # Initialize Cohere client
 API_KEY = "ms0slgGuFh2udoxiN8zIYPK7RsHRbqU03IQGpBpB"
@@ -49,15 +48,13 @@ def extract_text(file):
     else:
         return None
 
-# Compute ROUGE scores
-def compute_rouge_scores(generated, reference):
-    scorer = rouge_scorer.RougeScorer(['rouge1', 'rouge2', 'rougeL'], use_stemmer=True)
-    scores = scorer.score(reference, generated)
-    return {
-        'ROUGE-1': scores['rouge1'].fmeasure,
-        'ROUGE-2': scores['rouge2'].fmeasure,
-        'ROUGE-L': scores['rougeL'].fmeasure,
-    }
+# Compute Compression Ratio
+def compute_compression_ratio(original, summary):
+    original_words = len(original.split())
+    summary_words = len(summary.split())
+    if summary_words == 0:
+        return 0
+    return original_words / summary_words
 
 # Streamlit App
 def main():
@@ -127,14 +124,9 @@ def main():
                 st.markdown("### 📝 Generated Summary")
                 st.text_area("Summary:", summary, height=200)
 
-                # ROUGE Input & Score
-                st.markdown("### 📊 ROUGE Evaluation (Optional)")
-                reference_summary = st.text_area("Enter Reference Summary to Compare:", height=150)
-                if reference_summary:
-                    scores = compute_rouge_scores(summary, reference_summary)
-                    st.success("ROUGE Scores:")
-                    for k, v in scores.items():
-                        st.write(f"**{k}**: {v:.4f}")
+                # Compression Ratio
+                ratio = compute_compression_ratio(text, summary)
+                st.markdown(f"**📉 Compression Ratio:** {ratio:.2f} (The summary is {ratio:.2f}× shorter than the original text)")
 
                 # Download Buttons
                 st.markdown("---")
