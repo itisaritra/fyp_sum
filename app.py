@@ -87,8 +87,8 @@ def main():
 
     st.sidebar.markdown("---")
     st.sidebar.markdown("### 📄 Resources")
-    st.sidebar.markdown("- [Project Report](https://drive.google.com/file/d/12iWuXNXkGBNk5PrK6mHJO6RL5Ohwa5jS/view)")
-    st.sidebar.markdown("- [Project Presentation](https://summari-wa22e81.gamma.site/)")
+    st.sidebar.markdown("- [Project Report](https://github.com/TheCleverIdiott/FYP/blob/main/Thesis.pdf)")
+    st.sidebar.markdown("- [Project Presentation](https://www.canva.com/design/DAGmru0rtBs/P8Bh_GicQmmqb5YWdiL4Vw/view?utm_content=DAGmru0rtBs&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h90183d9892)")
 
     st.sidebar.markdown("---")
     st.sidebar.write("""
