@@ -78,7 +78,7 @@ def main():
         </style>
         <div class="main-header">Ensemble Text Summarization</div>
         <div class="sub-header">
-            A Streamlit-based application designed to enhance text summarization accuracy using an advanced ensemble learning approach...
+            A Streamlit-based application designed to enhance text summarization accuracy using an advanced ensemble learning approach.
         </div>
     """, unsafe_allow_html=True)
 
