@@ -129,8 +129,6 @@ def main():
                 st.markdown(f"**📉 Compression Ratio:** {ratio:.2f} (The summary is {ratio:.2f}× shorter than the original text)")
 
                 # Download Buttons
-                st.markdown("---")
-                st.markdown("### 💾 Download Summary")
                 col1, col2 = st.columns(2)
                 with col1:
                     st.download_button("Download as .txt", data=summary, file_name="summary.txt", mime="text/plain")
